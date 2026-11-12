@@ -201,7 +201,7 @@ details.hit{background:var(--s1);border:1px solid var(--line);border-radius:12px
 .inp{width:100%;max-width:340px;min-height:46px;background:var(--s2);border:1px solid var(--line);border-radius:10px;padding:0 14px;color:var(--text);font:inherit;font-size:16px}
 #toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:300;display:grid;gap:8px;width:min(92vw,420px)}
 .tt{background:var(--s1);border:1px solid var(--acc);border-radius:12px;padding:12px 16px;font-size:.85rem;animation:pop .35s var(--e);box-shadow:0 14px 40px -12px rgba(0,0,0,.6)}
-.qt svg{vertical-align:-5px;margin-right:4px}.bld{min-height:58px;border:1px dashed var(--line);border-radius:12px;padding:10px;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}.bank{display:flex;flex-wrap:wrap;gap:8px}.tile{min-height:42px;padding:0 14px;border:1px solid var(--line);background:var(--s1);border-radius:10px;font-size:.95rem;transition:.15s}.tile:hover:not(:disabled){border-color:var(--acc);color:var(--acc)}.bld .tile{border-color:var(--acc);background:rgba(0,255,44,.08)}.ans-row{display:flex;gap:10px;flex-wrap:wrap}.ans-row .inp{flex:1;min-width:180px;max-width:none}.ft{flex-direction:row}.xs{font-size:.8rem;color:var(--mut)}
+.qt svg{vertical-align:-5px;margin-right:4px}.bld{min-height:58px;border:1px dashed var(--line);border-radius:12px;padding:10px;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}.bank{display:flex;flex-wrap:wrap;gap:8px}.tile{min-height:42px;padding:0 14px;border:1px solid var(--line);background:var(--s1);border-radius:10px;font-size:.95rem;transition:.15s}.tile:hover:not(:disabled){border-color:var(--acc);color:var(--acc)}.bld .tile{border-color:var(--acc);background:rgba(0,255,44,.08)}.ans-row{display:flex;gap:10px;flex-wrap:wrap}.ans-row .inp{flex:1;min-width:180px;max-width:none}.tile small{display:block;font-size:.62rem;color:var(--mut);font-weight:400}.tk{background:var(--s2);border-radius:12px;padding:12px 14px;margin-top:10px}.tk b{font-size:1.15rem}.tk .tr{color:var(--acc);font-size:.8rem;margin-left:10px}.tk .rp{color:var(--mut);font-size:.8rem}.tk p{margin-top:6px;font-size:.84rem;color:var(--mut)}a.lsn{display:block;transition:.25s var(--e)}a.lsn:hover{border-color:var(--acc);transform:translateY(-3px)}.ft{flex-direction:row}.xs{font-size:.8rem;color:var(--mut)}
 @media(max-width:600px){.br{grid-template-columns:84px 1fr 40px}.hd{gap:10px}}
 </style>
 </head>
@@ -214,7 +214,7 @@ details.hit{background:var(--s1);border:1px solid var(--line);border-radius:12px
   <a class="logo" href="#top" aria-label="upyourself — на главную">up<span class="acc">↑</span>yourself</a>
   <button class="burger" id="bg" type="button" aria-label="Меню" aria-expanded="false" aria-controls="nav"><span></span></button>
   <nav class="nav" id="nav" aria-label="Главная навигация">
-    <a href="#subjects">предметы</a><a href="#stats">статистика</a><a href="#fav">избранное</a><a href="#profile">профиль</a>
+    <a href="#subjects">предметы</a><a href="#lang">языки</a><a href="#stats">статистика</a><a href="#fav">избранное</a><a href="#profile">профиль</a>
     <button class="ib" id="th" type="button" aria-label="Сменить тему">◐ тема</button><button class="ib" id="inst" type="button" hidden>⤓ установить</button>
   </nav>
 </header>
@@ -226,7 +226,7 @@ details.hit{background:var(--s1);border:1px solid var(--line);border-radius:12px
     <p class="k">// платформа для проверки знаний</p>
     <h1 class="name"><span>upyourself</span><span class="o">тесты_</span></h1>
     <p class="role">&gt; <span id="typed">проверь себя</span><span class="caret" aria-hidden="true">_</span></p>
-    <div class="cta"><a class="btn p" href="#subjects">Выбрать предмет →</a><button class="btn" type="button" data-act="daily">Ежедневный тест</button></div>
+    <div class="cta"><a class="btn p" href="#subjects">Выбрать предмет →</a><button class="btn" type="button" data-act="daily">Ежедневный тест</button><a class="btn" href="#lang">Учить языки</a></div>
     <div class="stats"><div><b id="h1">0</b>вопросов в базе</div><div><b id="h2">0</b>предметов</div><div><b id="h3">0</b>тестов пройдено тобой</div></div>
     <a class="scroll" href="#progress" aria-label="Вниз"></a>
   </section>
@@ -237,14 +237,15 @@ details.hit{background:var(--s1);border:1px solid var(--line);border-radius:12px
     <label class="sr" for="srch">Поиск по предметам и вопросам</label>
     <input class="srch" id="srch" type="search" placeholder="Найти предмет или вопрос" autocomplete="off">
     <div class="cat" id="cat"></div><div id="sres"></div></section>
-  <section class="sec" id="recent-s"><h2 class="ttl"><small>05</small>Недавние тесты</h2><div class="card" id="recent"></div></section>
-  <section class="sec" id="about"><h2 class="ttl"><small>06</small>О проекте</h2>
+  <section class="sec" id="langs"><h2 class="ttl"><small>05</small>Языки</h2><div class="cat" id="langc"></div><p class="note">// составляй предложения и разбирай, почему каждое слово стоит именно здесь</p><p class="ctl"><a class="btn" href="#lang">Все языки →</a></p></section>
+  <section class="sec" id="recent-s"><h2 class="ttl"><small>06</small>Недавние тесты</h2><div class="card" id="recent"></div></section>
+  <section class="sec" id="about"><h2 class="ttl"><small>07</small>О проекте</h2>
     <div class="about">
       <div class="card"><p>upyourself — платформа для проверки знаний по разным предметам: тесты, экзамены с таймером, разбор ошибок, XP, достижения и аналитика. Всё хранится в вашем браузере, регистрация не нужна.</p><p>Сделано вручную на <span class="acc">HTML, CSS и JavaScript</span>, без фреймворков.</p></div>
       <div class="card"><div class="lbl">Автор проекта</div><div class="lvl"><div class="lv" aria-hidden="true">Б</div><div><b style="font-size:1.2rem">Богдан</b><p class="xs">студент IT, Кыргызстан</p><p class="xs"><a class="acc" href="https://t.me/Muhswx" target="_blank" rel="noopener noreferrer">@Muhswx</a> в Telegram</p></div></div></div>
     </div>
   </section>
-  <section class="sec" id="terminal"><h2 class="ttl"><small>07</small>Терминал</h2>
+  <section class="sec" id="terminal"><h2 class="ttl"><small>08</small>Терминал</h2>
     <div class="chips" aria-label="Быстрые команды"><button class="chip" type="button" data-c="help">help</button><button class="chip" type="button" data-c="subjects">subjects</button><button class="chip" type="button" data-c="stats">stats</button><button class="chip" type="button" data-c="random">random</button><button class="chip" type="button" data-c="sudo rm -rf /">sudo rm -rf /</button></div>
     <div class="term" id="tbox"><div class="tb"><i></i><i></i><i></i><span>guest@upyourself: ~</span></div>
       <div class="tbody" id="tbody" role="log" aria-live="polite"><div class="tl m">введи help, чтобы увидеть команды</div></div>
@@ -269,6 +270,8 @@ details.hit{background:var(--s1);border:1px solid var(--line);border-radius:12px
 <div id="v-stats" class="view wrap" hidden></div>
 <div id="v-fav" class="view wrap" hidden></div>
 <div id="v-prof" class="view wrap" hidden></div>
+<div id="v-lang" class="view wrap" hidden></div>
+<div id="v-les" class="view wrap" hidden></div>
 </div>
 
 <footer class="ft"><span>© 2026 upyourself · автор: Богдан</span><span><span class="dot" style="display:inline-block" aria-hidden="true"></span> данные хранятся в вашем браузере</span></footer>
@@ -1605,6 +1608,76 @@ window.SUBJECTS.forEach(function(s){(X[s.id]||[]).forEach(function(q){s.q.push(q
 })();
 </script>
 <script>
+window.LANGS=(function(){
+function K(ru,a){return{ru:ru,t:a.map(function(x){return{w:x[0],tr:x[1],ru:x[2],p:x[3],n:x[4]}})}}
+var EN=[
+{id:"A1",title:"A1 · Начальный",les:[
+{id:"en-a1-1",title:"Знакомство",ls:[
+K("Я студент.",[["I","ай","я","местоимение","Подлежащее: кто выполняет действие. I всегда пишется с большой буквы."],["am","эм","есть, являюсь","глагол to be","В английском предложении нужен глагол. С I используется форма am."],["a","э","(один)","неопределённый артикль","Ставится перед исчисляемым существительным в единственном числе, когда речь о человеке или предмете вообще."],["student","стьюдент","студент","существительное","Называет, кем человек является. Статус или профессия идут после глагола to be."]]),
+K("Она моя подруга.",[["She","ши","она","местоимение","Подлежащее женского рода."],["is","из","есть","глагол to be","С he, she, it используется форма is."],["my","май","мой, моя","притяжательное местоимение","Стоит перед существительным и заменяет артикль: нельзя сказать a my friend."],["friend","френд","друг, подруга","существительное","В английском нет рода у слова friend: оно подходит и для мужчины, и для женщины."]]),
+K("Мы живём в Бишкеке.",[["We","уи","мы","местоимение","Подлежащее."],["live","лив","живём","глагол","Present Simple: с we, you, they и I глагол стоит в начальной форме, без окончания."],["in","ин","в","предлог","In используется с городами и странами."],["Bishkek","бишкек","Бишкек","имя собственное","Названия городов всегда пишутся с большой буквы."]]),
+K("Ты любишь чай?",[["Do","ду","(вопрос)","вспомогательный глагол","Вопрос в Present Simple строится с do. Сам do не переводится, он лишь показывает, что это вопрос."],["you","ю","ты, вы","местоимение","После do сразу идёт подлежащее."],["like","лайк","любить, нравиться","глагол","Смысловой глагол стоит в начальной форме после подлежащего."],["tea","ти","чай","существительное","Неисчисляемое слово, артикль не нужен."]]),
+K("Он не играет в футбол.",[["He","хи","он","местоимение","Подлежащее мужского рода."],["does","даз","(вспомогат.)","вспомогательный глагол","С he, she, it отрицание строится с does."],["not","нот","не","частица","Ставится сразу после does."],["play","плей","играть","глагол","После does глагол без -s: окончание уже взял на себя does."],["football","футбол","футбол","существительное","Названия игр и видов спорта используются без артикля."]])]},
+{id:"en-a1-2",title:"Повседневность",ls:[
+K("У меня большая собака.",[["I","ай","я","местоимение","Подлежащее."],["have","хэв","иметь, у меня есть","глагол","Выражает владение. С I, you, we, they используется have."],["a","э","(одна)","неопределённый артикль","Перед согласным звуком используется a, перед гласным — an."],["big","биг","большой","прилагательное","Прилагательное стоит перед существительным и не меняется по родам."],["dog","дог","собака","существительное","Исчисляемое слово в единственном числе, поэтому перед ним нужен артикль."]]),
+K("Кошка на столе.",[["The","зэ","(эта, та)","определённый артикль","Говорим о конкретной кошке, которую знают оба собеседника."],["cat","кэт","кошка","существительное","Подлежащее."],["is","из","находится","глагол to be","Единственное число (cat = it), поэтому is."],["on","он","на","предлог","On означает «на поверхности»."],["the","зэ","(этот)","определённый артикль","Речь о конкретном столе."],["table","тэйбл","стол","существительное","Дополнение к предлогу on."]]),
+K("Они ездят в школу на автобусе.",[["They","зэй","они","местоимение","Подлежащее во множественном числе."],["go","гоу","ехать, идти","глагол","Present Simple с they: начальная форма без окончания."],["to","ту","в, к","предлог","Показывает направление движения."],["school","скул","школа","существительное","В выражении go to school артикль не нужен: имеется в виду учёба."],["by","бай","на (транспорте)","предлог","By + вид транспорта без артикля."],["bus","бас","автобус","существительное","Вид транспорта после by."]])]}]},
+{id:"A2",title:"A2 · Элементарный",les:[
+{id:"en-a2-1",title:"Прошлое, планы, сравнения",ls:[
+K("Вчера я ходил в парк.",[["Yesterday","естэдей","вчера","наречие времени","Маркер Past Simple. Часто стоит в начале предложения."],["I","ай","я","местоимение","Подлежащее."],["went","вент","ходил","глагол (go в прошедшем)","Go — неправильный глагол: go — went — gone. Окончание -ed здесь не нужно."],["to","ту","в","предлог","Направление движения."],["the","зэ","(этот)","определённый артикль","Речь о конкретном парке, известном обоим."],["park","парк","парк","существительное","Дополнение к to."]]),
+K("Она собирается навестить бабушку.",[["She","ши","она","местоимение","Подлежащее."],["is","из","есть","вспомогательный глагол","Первая часть конструкции be going to. С she форма is."],["going","гоуин","собираясь","глагол","Конструкция be going to выражает заранее решённый план."],["to","ту","(частица)","частица","После going to идёт глагол в начальной форме."],["visit","визит","навестить","глагол","Начальная форма без -s."],["her","хё","её","притяжательное местоимение","Принадлежит подлежащему she."],["grandmother","грэндмазэ","бабушка","существительное","Дополнение."]]),
+K("Мы живём здесь пять лет.",[["We","уи","мы","местоимение","Подлежащее."],["have","хэв","(вспомогат.)","вспомогательный глагол","Present Perfect: have + третья форма глагола."],["lived","ливд","жили","глагол (3-я форма)","У правильных глаголов третья форма совпадает с прошедшей: live + ed."],["here","хиэ","здесь","наречие места","Ставится после глагола."],["for","фо","в течение","предлог","For + длительность: for five years."],["five","файв","пять","числительное","Количество лет."],["years","йиэз","лет","существительное","После числа больше единицы — множественное число."]]),
+K("Эта сумка тяжелее той.",[["This","зис","эта","указательное местоимение","This указывает на предмет рядом с говорящим."],["bag","бэг","сумка","существительное","Подлежащее."],["is","из","есть","глагол to be","Единственное число."],["heavier","хевиэ","тяжелее","сравнительная степень","Heavy → heavier: у короткого прилагательного y меняется на ier."],["than","зэн","чем","союз","Ставится после сравнительной степени и вводит предмет сравнения."],["that","зэт","та","указательное местоимение","That указывает на дальний предмет."],["one","уан","(сумка)","заменитель существительного","One заменяет слово bag, чтобы не повторять его."]]),
+K("Ты должен носить шлем.",[["You","ю","ты, вы","местоимение","Подлежащее."],["must","маст","должен","модальный глагол","Выражает обязанность. Не имеет окончаний."],["wear","уэа","носить","глагол","После модального глагола — начальная форма без to."],["a","э","(один)","неопределённый артикль","Шлем — исчисляемый предмет в единственном числе."],["helmet","хелмит","шлем","существительное","Дополнение."]]),
+K("Я тебя не слышу.",[["I","ай","я","местоимение","Подлежащее."],["can't","кант","не могу","can + not","Сокращённая форма cannot. Отрицание модального глагола не требует do."],["hear","хиэ","слышать","глагол","После can — начальная форма. С глаголами восприятия can обычно переводится «слышу»."],["you","ю","тебя","местоимение (дополнение)","В роли дополнения you не меняется."]])]}]},
+{id:"B1",title:"B1 · Средний",les:[
+{id:"en-b1-1",title:"Условия и косвенная речь",ls:[
+K("Если пойдёт дождь, мы останемся дома.",[["If","иф","если","союз","Вводит условие."],["it","ит","(безличное)","местоимение","Безличное подлежащее при погоде."],["rains","рэйнз","идёт дождь","глагол","После if о будущем используется Present Simple, а не will."],["we","уи","мы","местоимение","Подлежащее главной части."],["will","уил","(будущее)","вспомогательный глагол","Will стоит в главной части, а не после if."],["stay","стэй","оставаться","глагол","После will — начальная форма."],["at","эт","в, у","предлог","At в сочетании со словом home."],["home","хоум","дом","существительное","Stay at home — устойчивое сочетание."]]),
+K("Я жду уже час.",[["I","ай","я","местоимение","Подлежащее."],["have","хэв","(вспомогат.)","вспомогательный глагол","Первая часть Present Perfect Continuous: have + been + -ing."],["been","бин","(быть)","глагол be (3-я форма)","Вторая часть конструкции. Сам по себе не переводится."],["waiting","уэйтин","ожидая","глагол с -ing","Показывает, что действие длится до сих пор."],["for","фо","в течение","предлог","For + период времени."],["an","эн","(один)","неопределённый артикль","Hour начинается с гласного звука (h не читается), поэтому an."],["hour","ауэ","час","существительное","Период времени после for."]]),
+K("Книга, которую я купил, интересная.",[["The","зэ","(эта)","определённый артикль","Речь о конкретной книге."],["book","бук","книга","существительное","Подлежащее."],["which","уич","которую","относительное местоимение","Связывает придаточное с существительным book."],["I","ай","я","местоимение","Подлежащее придаточного."],["bought","бот","купил","глагол (buy в прошедшем)","Buy — неправильный глагол: buy — bought — bought."],["is","из","есть","глагол to be","Главный глагол предложения."],["interesting","интрестин","интересная","прилагательное","Окончание -ing описывает свойство предмета: книга интересная."]]),
+K("Она сказала, что устала.",[["She","ши","она","местоимение","Подлежащее."],["said","сэд","сказала","глагол","Прошедшая форма say. Вводит косвенную речь."],["that","зэт","что","союз","Вводит придаточное."],["she","ши","она","местоимение","Подлежащее придаточного."],["was","уоз","была","глагол be (прош.)","В косвенной речи время сдвигается назад: is → was."],["tired","тайэд","уставшая","прилагательное","Состояние человека."]]),
+K("Он попросил меня закрыть окно.",[["He","хи","он","местоимение","Подлежащее."],["asked","аскт","попросил","глагол","Прошедшая форма ask."],["me","ми","меня","местоимение (дополнение)","После ask сначала идёт тот, кого просят."],["to","ту","(частица)","частица","Ask somebody to do something."],["close","клоуз","закрыть","глагол","Начальная форма после to."],["the","зэ","(это)","определённый артикль","Речь о конкретном окне."],["window","виндоу","окно","существительное","Дополнение."]])]}]},
+{id:"B2",title:"B2 · Выше среднего",les:[
+{id:"en-b2-1",title:"Сложные конструкции",ls:[
+K("Если бы я знал, я бы помог тебе.",[["If","иф","если","союз","Вводит условие."],["I","ай","я","местоимение","Подлежащее условной части."],["had","хэд","(вспомогат.)","вспомогательный глагол","Third conditional: if + had + третья форма."],["known","ноун","знал","глагол (3-я форма)","Know — knew — known."],["I","ай","я","местоимение","Подлежащее главной части."],["would","вуд","бы","модальный глагол","Показывает нереальный результат."],["have","хэв","(иметь)","вспомогательный глагол","Would have + третья форма."],["helped","хелпт","помог","глагол (3-я форма)","Правильный глагол: help + ed."],["you","ю","тебе","местоимение","Дополнение."]]),
+K("Отчёт был написан нашим менеджером.",[["The","зэ","(этот)","определённый артикль","Конкретный отчёт."],["report","рипорт","отчёт","существительное","Подлежащее пассива: оно не делает действие, а получает его."],["was","уоз","был","глагол be","Passive Voice: be + третья форма. Время — Past Simple."],["written","риттн","написан","глагол (3-я форма)","Write — wrote — written."],["by","бай","кем","предлог","By вводит исполнителя действия."],["our","ауэ","наш","притяжательное местоимение","Стоит перед существительным."],["manager","мэнидже","менеджер","существительное","Исполнитель действия."]]),
+K("Хотел бы я говорить по-французски.",[["I","ай","я","местоимение","Подлежащее."],["wish","уиш","хотел бы, жаль, что","глагол","Wish выражает сожаление о настоящем."],["I","ай","я","местоимение","Подлежащее придаточного."],["could","куд","мог бы","модальный глагол","После wish используется прошедшая форма, хотя речь о настоящем."],["speak","спик","говорить","глагол","Начальная форма после could."],["French","френч","французский","существительное","Названия языков пишутся с большой буквы."]]),
+K("Несмотря на дождь, мы насладились поездкой.",[["Despite","диспайт","несмотря на","предлог","После despite идёт существительное или форма на -ing, а не целое предложение."],["the","зэ","(этот)","определённый артикль","Конкретный дождь."],["rain","рэйн","дождь","существительное","Дополнение к despite."],["we","уи","мы","местоимение","Подлежащее."],["enjoyed","инджойд","насладились","глагол","Past Simple правильного глагола. Enjoy берёт объект без предлога."],["the","зэ","(эта)","определённый артикль","Конкретная поездка."],["trip","трип","поездка","существительное","Дополнение."]]),
+K("Она предложила пойти в кино.",[["She","ши","она","местоимение","Подлежащее."],["suggested","саджестид","предложила","глагол","После suggest используется форма на -ing."],["going","гоуин","идти","герундий","Форма -ing выступает как существительное: «предложила (что?) ходьбу»."],["to","ту","в, к","предлог","Направление."],["the","зэ","(это)","определённый артикль","Конкретное место."],["cinema","синэма","кино","существительное","Дополнение."]]),
+K("Чем больше практикуешься, тем лучше становишься.",[["The","зэ","(чем)","артикль в сравнении","Конструкция the more …, the better … показывает, что одно меняется вслед за другим."],["more","мо","больше","сравнительная степень","Сравнительная степень слова much."],["you","ю","ты","местоимение","Подлежащее."],["practise","прэктис","практикуешься","глагол","Present Simple."],["the","зэ","(тем)","артикль в сравнении","Вторая часть конструкции."],["better","бетэ","лучше","сравнительная степень","Сравнительная степень слова good."],["you","ю","ты","местоимение","Подлежащее."],["become","бикам","становишься","глагол","Present Simple."]])]}]}];
+var JA=[{id:"N5",title:"Начальный (N5)",les:[
+{id:"ja-n5-1",title:"Знакомство",ls:[
+K("Я студент.",[["私","watashi","я","местоимение","Тема предложения: о чём говорим."],["は","wa","(частица темы)","частица","Показывает тему: «что касается меня». Пишется は, читается wa."],["学生","gakusei","студент","существительное","Называет, кем является говорящий."],["です","desu","есть, является","вежливая связка","Вежливое завершение. В японском глагол или связка всегда стоят в конце."]]),
+K("Это яблоко.",[["これ","kore","это","указательное слово","Предмет рядом с говорящим."],["は","wa","(частица темы)","частица","Выделяет тему: «что касается этого»."],["りんご","ringo","яблоко","существительное","Названия фруктов часто пишутся хираганой."],["です","desu","есть","вежливая связка","Завершает предложение вежливо."]]),
+K("Я пью воду.",[["私","watashi","я","местоимение","Тема."],["は","wa","(частица темы)","частица","Тема предложения."],["水","mizu","вода","существительное","Объект действия."],["を","o","(частица объекта)","частица","Показывает, на что направлено действие. Пишется を, читается o."],["飲みます","nomimasu","пью","вежливый глагол","Основа 飲み + ます даёт вежливую форму. Глагол стоит в самом конце."]]),
+K("Я изучаю японский.",[["私","watashi","я","местоимение","Тема."],["は","wa","(частица темы)","частица","Тема предложения."],["日本語","nihongo","японский язык","существительное","Объект изучения."],["を","o","(частица объекта)","частица","Показывает объект действия."],["勉強します","benkyō shimasu","изучаю","глагол","勉強 («учёба») + します («делаю») образуют глагол «учиться, изучать»."]]),
+K("Кошка находится на столе.",[["猫","neko","кошка","существительное","Тема предложения."],["は","wa","(частица темы)","частица","Показывает тему."],["机","tsukue","стол","существительное","Место, о котором речь."],["の","no","(притяжательная частица)","частица","Соединяет два существительных: «стола верх»."],["上","ue","верх, поверхность","существительное","Вместе с の означает «на столе»."],["に","ni","(частица места)","частица","Показывает место нахождения."],["います","imasu","находится","глагол","Используется для живых существ. Для предметов — あります."]])]},
+{id:"ja-n5-2",title:"Повседневность",ls:[
+K("Каждый день хожу в школу.",[["毎日","mainichi","каждый день","наречие времени","Время обычно идёт в начале предложения."],["学校","gakkō","школа","существительное","Пункт назначения."],["に","ni","(частица направления)","частица","Показывает направление движения: «в, к»."],["行きます","ikimasu","иду, еду","вежливый глагол","Основа 行き + ます. Глагол в конце."]]),
+K("Вчера я смотрел фильм.",[["昨日","kinō","вчера","наречие времени","Показывает время действия."],["映画","eiga","фильм","существительное","Объект действия."],["を","o","(частица объекта)","частица","Показывает, что именно мы смотрели."],["見ました","mimashita","смотрел","вежливый глагол (прошедшее)","Окончание ます меняется на ました — прошедшее время."]]),
+K("Я люблю кошек.",[["私","watashi","я","местоимение","Тема предложения."],["は","wa","(частица темы)","частица","Показывает тему."],["猫","neko","кошки","существительное","Предмет симпатии."],["が","ga","(частица подлежащего)","частица","С словом 好き предмет симпатии отмечается が, а не を."],["好き","suki","нравящийся","на-прилагательное","Буквально: «кошки мне нравятся»."],["です","desu","есть","вежливая связка","Завершает предложение."]]),
+K("Я хочу пить воду.",[["水","mizu","вода","существительное","Объект."],["を","o","(частица объекта)","частица","Показывает, что мы хотим пить."],["飲みたい","nomitai","хочу пить","глагол в форме желания","Основа 飲み + たい выражает «хочу сделать»."],["です","desu","есть","вежливая связка","Делает форму желания вежливой."]]),
+K("Японский не труден.",[["日本語","nihongo","японский язык","существительное","Тема."],["は","wa","(частица темы)","частица","Показывает тему."],["難しくない","muzukashikunai","нетрудный","и-прилагательное (отрицание)","Отрицание: 難しい → 難しくない (い меняется на くない)."],["です","desu","есть","вежливая связка","Завершает вежливо."]])]}]}];
+var KO=[{id:"A",title:"Начальный",les:[
+{id:"ko-a-1",title:"Знакомство",ls:[
+K("Я студент.",[["저는","jeoneun","я (вежл.), тема","местоимение + частица","저 — вежливое «я», 는 — частица темы после гласной."],["학생이에요","haksaengieyo","есть студент","существительное + связка","학생 («студент») + 이에요. Связка стоит в конце."]]),
+K("Это яблоко.",[["이것은","igeoseun","это (тема)","указательное слово + частица","이것 «это» + 은 — частица темы после согласной."],["사과예요","sagwayeyo","есть яблоко","существительное + связка","사과 оканчивается на гласную, поэтому 예요 (после согласной — 이에요)."]]),
+K("Я пью воду.",[["저는","jeoneun","я, тема","местоимение + частица","Тема предложения."],["물을","mureul","воду","существительное + частица","물 («вода») + 을: частица объекта после согласной."],["마셔요","masyeoyo","пью","глагол вежливый","마시다 → 마셔요. Глагол стоит в конце."]]),
+K("Я изучаю корейский.",[["저는","jeoneun","я, тема","местоимение + частица","Тема предложения."],["한국어를","hangugeoreul","корейский язык (объект)","существительное + частица","한국어 + 를: частица объекта после гласной."],["공부해요","gongbuhaeyo","изучаю","глагол вежливый","공부하다 («учиться») → 공부해요."]]),
+K("Кошка на столе.",[["고양이는","goyangineun","кошка (тема)","существительное + частица","고양이 + 는: частица темы после гласной."],["책상","chaeksang","стол","существительное","Место."],["위에","wie","на (сверху)","существительное + частица","위 («верх») + 에: частица места."],["있어요","isseoyo","находится, есть","глагол вежливый","있다 означает «быть, находиться»."]])]},
+{id:"ko-a-2",title:"Повседневность",ls:[
+K("Я каждый день хожу в школу.",[["저는","jeoneun","я, тема","местоимение + частица","Тема предложения."],["매일","maeil","каждый день","наречие времени","Время часто стоит после темы."],["학교에","hakgyoe","в школу","существительное + частица","학교 + 에: частица направления."],["가요","gayo","иду","глагол вежливый","가다 → 가요."]]),
+K("Вчера я смотрел фильм.",[["어제","eoje","вчера","наречие времени","Время действия."],["영화를","yeonghwareul","фильм (объект)","существительное + частица","영화 + 를: частица объекта после гласной."],["봤어요","bwasseoyo","смотрел","глагол (прошедшее)","보다 + 았어요 → 봤어요: прошедшее время."]]),
+K("Я люблю кошек.",[["저는","jeoneun","я, тема","местоимение + частица","Тема предложения."],["고양이를","goyangireul","кошек (объект)","существительное + частица","좋아하다 требует объект с 를/을."],["좋아해요","joahaeyo","люблю","глагол вежливый","좋아하다 («любить») → 좋아해요."]]),
+K("Я хочу пить воду.",[["물을","mureul","воду","существительное + частица","Объект действия."],["마시고","masigo","пить","основа глагола + 고","Основа 마시- + 고 нужна для конструкции «хочу сделать»."],["싶어요","sipeoyo","хочу","вспомогательный глагол","싶다 после 고 выражает желание."]]),
+K("Корейский нетруден.",[["한국어는","hangugeoneun","корейский (тема)","существительное + частица","한국어 + 는: частица темы."],["어렵지","eoryeopji","трудно","основа + 지","Основа 어렵- + 지 используется перед отрицанием."],["않아요","anayo","не","вспомогательный глагол","않다 («не») ставит основное слово в отрицание."]])]}]}];
+return[
+{id:"en",name:"Английский",ic:"Aa",sp:" ",tr:"Русская транскрипция (приблизительная)",lvl:"A1–B2",tron:false,desc:"От базовых фраз до сложных конструкций. С разбором времён, артиклей и порядка слов.",lv:EN},
+{id:"ja",name:"Японский",ic:"あ",sp:"",tr:"Ромадзи",lvl:"N5",tron:true,desc:"Частицы は, を, に, が, の и вежливые глаголы с разбором каждого слова.",lv:JA},
+{id:"ko",name:"Корейский",ic:"한",sp:" ",tr:"Романизация",lvl:"начальный",tron:true,desc:"Частицы и окончания, вежливая форма. Показано, как слово состоит из частей.",lv:KO}];
+})();
+</script>
+<script>
 (function(){
 "use strict";
 var $=function(x){return document.getElementById(x)},RM=matchMedia("(prefers-reduced-motion:reduce)").matches,S=window.SUBJECTS.filter(function(s){return s.q.length}),Q={},L=["а","б","в"];
@@ -1621,7 +1694,7 @@ var MN={normal:"Обычный тест",exam:"Экзамен",practice:"Пра�
 var D=load();
 function load(){var d;try{d=JSON.parse(localStorage.getItem("uys.v2"))}catch(e){}
  if(!d||typeof d!=="object")d={};
- var f={name:"Гость",xp:0,hist:[],qs:{},fav:[],day:{last:"",streak:0,best:0},ach:{},daily:{},theme:"dark",legacy:null};
+ var f={name:"Гость",xp:0,hist:[],qs:{},fav:[],day:{last:"",streak:0,best:0},ach:{},daily:{},lang:{},theme:"dark",legacy:null};
  Object.keys(f).forEach(function(k){if(d[k]===undefined||typeof d[k]!==typeof f[k]&&k!=="legacy")d[k]=f[k]});
  if(!d.legacy){try{var o=JSON.parse(localStorage.getItem("uys.v1"));d.legacy=o&&typeof o==="object"?o:{}}catch(e){d.legacy={}}}
  return d}
@@ -1657,7 +1730,8 @@ var AC=[
 {id:"fav10",ic:"⭐",n:"Коллекционер",d:"10 вопросов в избранном",f:function(){return D.fav.length>=10}},
 {id:"lv5",ic:"🏆",n:"Уровень 5",d:"Достигни 5 уровня",f:function(){return lvl(D.xp)>=5}},
 {id:"exam",ic:"⏱",n:"Под давлением",d:"Сдай экзамен на 70%+",f:function(c){return c.h&&c.h.m==="exam"&&c.h.ok/c.h.n>=.7}},
-{id:"fix",ic:"🛠",n:"Работа над ошибками",d:"80%+ в тренировке по ошибкам",f:function(c){return c.h&&(c.h.m==="mistakes"||c.h.m==="custom")&&c.h.n>=5&&c.h.ok/c.h.n>=.8}}];
+{id:"fix",ic:"🛠",n:"Работа над ошибками",d:"80%+ в тренировке по ошибкам",f:function(c){return c.h&&(c.h.m==="mistakes"||c.h.m==="custom")&&c.h.n>=5&&c.h.ok/c.h.n>=.8}},
+{id:"poly",ic:"🌏",n:"Полиглот",d:"Пройди уроки на трёх языках",f:function(){return LG.filter(function(g){return ldone(g)[0]>0}).length>=3}}];
 function checkAch(h){var u={};D.hist.forEach(function(x){x.ids.forEach(function(id){if(Q[id])u[Q[id].s]=1})});
  var c={h:h,tests:tests(),q:tot().q,subs:Object.keys(u).length},ns=[];
  AC.forEach(function(a){if(!D.ach[a.id]&&a.f(c)){D.ach[a.id]=Date.now();ns.push(a.id);toast("🏅 Достижение: "+a.n)}});return ns}
@@ -1714,7 +1788,7 @@ function home(){
  $("recs").innerHTML=r.join("");
  var h=D.hist.slice(-5).reverse();
  $("recent").innerHTML=h.length?h.map(function(x){return'<div class="row"><span><a href="#res='+x.t+'">'+esc(sn(x.s))+" · "+MN[x.m]+"</a><br><small>"+dshort(x.t)+" · "+x.n+' вопр.</small></span><b class="'+(x.ok/x.n>=.7?"acc":"")+'">'+x.ok+"/"+x.n+"</b></div>"}).join(""):'<div class="empty"><b>Пока пусто</b>Пройденные тесты появятся здесь.</div>';
- cat($("srch").value)}
+ cat($("srch").value);langCards()}
 function cat(q){q=(q||"").trim().toLowerCase();var c=$("cat"),m=S.filter(function(s){return !q||(s.name+" "+s.desc+" "+topics(s).join(" ")).toLowerCase().indexOf(q)>=0});
  c.innerHTML=m.map(function(s){var p=Math.round(seen(s.id)/s.q.length*100),b=best(s.id);return'<a class="sub" href="#s='+s.id+'"><span class="ic">'+ico(s.id)+"</span><h3>"+esc(s.name)+"</h3><p>"+esc(s.desc)+'</p><div class="mt"><span>'+s.q.length+" вопр. · "+topics(s).length+' тем</span><span>'+(b?"лучший: "+b+"%":"")+'</span></div><div class="bar" title="Изучено '+p+'%"><i style="width:'+p+'%"></i></div></a>'}).join("")||(q?"":'<div class="empty">Нет предметов</div>');
  var r=$("sres");r.innerHTML="";if(q.length<2)return;
@@ -1850,15 +1924,51 @@ document.addEventListener("click",function(e){
   return}
  var l=e.target.closest('a[href^="#"]');if(l){var h=l.getAttribute("href");if(h.length>1){e.preventDefault();go(h)}}});
 document.addEventListener("click",function(e){if(e.target.id==="sgo"&&sc){sc.shuf=$("shf").checked;begin(sc)}});
+/* ---------- языки ---------- */
+var LG=window.LANGS,LS=null;
+function lesAll(){var a=[];LG.forEach(function(g){g.lv.forEach(function(v){v.les.forEach(function(l){a.push({g:g,v:v,l:l})})})});return a}
+function lesFind(id){return lesAll().filter(function(x){return x.l.id===id})[0]}
+function ldone(g){var d=0,n=0;g.lv.forEach(function(v){v.les.forEach(function(l){n++;if(D.lang[l.id])d++})});return[d,n]}
+function lcard(g){var p=ldone(g);return'<a class="sub" href="#lang='+g.id+'"><span class="ic">'+esc(g.ic)+'</span><h3>'+esc(g.name)+'</h3><p>'+esc(g.desc)+'</p><div class="mt"><span>'+p[0]+" из "+p[1]+' уроков</span><span>'+esc(g.lvl)+'</span></div><div class="bar"><i style="width:'+Math.round(p[0]/p[1]*100)+'%"></i></div></a>'}
+function langCards(){$("langc").innerHTML=LG.map(lcard).join("")}
+function langView(id){var v=$("v-lang"),g=LG.filter(function(x){return x.id===id})[0];
+ if(id&&!g)return false;
+ if(!g){v.innerHTML='<a class="crumb" href="#top">← на главную</a><h1 class="qt"><span class="acc">//</span> Языки</h1><p class="lead">Составляйте предложения из слов и сразу получайте разбор: что значит каждое слово, как оно читается и почему стоит именно здесь.</p><div class="cat">'+LG.map(lcard).join("")+"</div>";return true}
+ v.innerHTML='<a class="crumb" href="#lang">← все языки</a><h1 class="qt"><span class="acc">'+esc(g.ic)+"</span> "+esc(g.name)+'</h1><p class="lead">'+esc(g.desc)+"</p>"+g.lv.map(function(lv){return'<h2 class="ttl" style="margin-top:30px">'+esc(lv.title)+'</h2><div class="grid2">'+lv.les.map(function(l){var o=D.lang[l.id];return'<a class="card lsn" href="#les='+l.id+'"><b>'+esc(l.title)+'</b><p class="xs">'+l.ls.length+' предложений</p><p class="xs '+(o?"acc":"")+'">'+(o?"✓ лучший результат: "+o.best+" из "+l.ls.length:"новый урок")+"</p></a>"}).join("")+"</div>"}).join("");return true}
+function lesView(id){var f=lesFind(id);if(!f)return false;LS={f:f,i:0,ok:0,tr:f.g.tron,end:false};nextS();return true}
+function nextS(){var s=LS.f.l.ls[LS.i],idx=s.t.map(function(_,k){return k});LS.pl=[];LS.chk=false;LS.good=false;LS.ord=shuf(idx);if(LS.ord.join()===idx.join()&&idx.length>1)LS.ord.reverse();renderL()}
+function joinW(g,s,arr){return arr.map(function(k){return s.t[k].w}).join(g.sp)}
+function endMark(g,s){var e=s.ru.slice(-1);return g.id==="ja"?(e==="?"?"？":"。"):e}
+function renderL(){var v=$("v-les"),f=LS.f,g=f.g,ls=f.l.ls,n=ls.length;
+ if(LS.end){v.innerHTML='<a class="crumb" href="#lang='+g.id+'">← '+esc(g.name)+'</a><h1 class="qt"><span class="acc">//</span> Урок пройден</h1><div class="score"><div class="ring" id="lring" style="--p:0" role="img" aria-label="'+LS.ok+" из "+n+'"><b>'+LS.ok+"<small>/"+n+'</small></b></div><div class="sm"><strong>'+(LS.ok===n?"Без единой ошибки!":LS.ok>=n*.7?"Хороший результат.":"Нужно ещё повторить.")+'</strong><span class="acc">+'+LS.xp+' XP</span></div></div><div class="ctl"><button class="btn p" type="button" data-lt="again">Пройти ещё раз</button><a class="btn" href="#lang='+g.id+'">К урокам</a></div>';requestAnimationFrame(function(){requestAnimationFrame(function(){var r=$("lring");if(r)r.style.setProperty("--p",Math.round(LS.ok/n*100))})});return}
+ var s=ls[LS.i],tile=function(k,act,idx){var t=s.t[k];return'<button type="button" class="tile" data-lt="'+act+'" data-k="'+k+'" data-n="'+idx+'"'+(LS.chk?" disabled":"")+(act==="del"?' aria-label="Убрать слово '+esc(t.w)+'"':"")+">"+esc(t.w)+(LS.tr?"<small>"+esc(t.tr)+"</small>":"")+"</button>"};
+ var steps=ls.map(function(_,k){return'<i class="'+(k===LS.i?"c":k<LS.i?"d":"")+'"></i>'}).join("");
+ var h='<a class="crumb" href="#lang='+g.id+'">← '+esc(g.name)+" · "+esc(f.v.title)+'</a><h1 class="qt"><span class="acc">//</span> '+esc(f.l.title)+'</h1><p class="qc">предложение <b>'+(LS.i+1)+"</b> из "+n+'</p><div class="steps">'+steps+'</div><h2 class="qq">Составьте предложение: «'+esc(s.ru)+'»</h2><div class="bld" aria-label="Ваше предложение">'+(LS.pl.length?LS.pl.map(function(k,i){return tile(k,"del",i)}).join(""):'<span class="xs">Нажимайте слова ниже по порядку</span>')+'</div><div class="bank">'+LS.ord.filter(function(k){return LS.pl.indexOf(k)<0}).map(function(k){return tile(k,"add",0)}).join("")+'</div><label class="chk"><input type="checkbox" data-lt="tr"'+(LS.tr?" checked":"")+"> Показывать транскрипцию ("+esc(g.tr)+")</label>";
+ if(!LS.chk)h+='<div class="ctl"><button class="btn" type="button" data-lt="reset">Сбросить</button><button class="btn p" type="button" data-lt="chk">Проверить</button></div>';
+ else{var all=s.t.map(function(_,k){return k}),full=esc(joinW(g,s,all)+endMark(g,s));h+='<div class="expl" style="margin-top:18px">'+(LS.good?'<b class="acc">✓ Верно!</b>':'<b style="color:var(--bad)">✗ Не совсем.</b> Правильный порядок: <b>'+full+"</b>")+'</div><div class="card" style="margin-top:14px"><div class="lbl">Разбор предложения</div><p style="font-size:1.15rem"><b>'+full+'</b></p><p class="acc">'+esc(s.t.map(function(t){return t.tr}).join(" "))+'</p><p class="xs">'+esc(s.ru)+"</p>"+s.t.map(function(t){return'<div class="tk"><div><b>'+esc(t.w)+'</b><span class="tr">'+esc(t.tr)+'</span></div><div class="rp">'+esc(t.ru)+" · "+esc(t.p)+"</div><p>"+esc(t.n)+"</p></div>"}).join("")+'</div><div class="ctl"><button class="btn p" type="button" data-lt="next">'+(LS.i===n-1?"Завершить ✓":"Дальше →")+"</button></div>"}
+ v.innerHTML=h}
+function finishL(){var f=LS.f,n=f.l.ls.length;LS.xp=LS.ok*8+(LS.ok===n?20:0);var o=D.lang[f.l.id]||{best:0,runs:0};o.best=Math.max(o.best,LS.ok);o.runs++;D.lang[f.l.id]=o;D.xp+=LS.xp;tick();checkAch(null);save();LS.end=true;renderL()}
+$("v-les").addEventListener("click",function(e){var b=e.target.closest("[data-lt]");if(!b||!LS)return;var a=b.dataset.lt,s=LS.f.l.ls[LS.i];
+ if(a==="add"){LS.pl.push(+b.dataset.k);renderL()}
+ else if(a==="del"){LS.pl.splice(+b.dataset.n,1);renderL()}
+ else if(a==="reset"){LS.pl=[];renderL()}
+ else if(a==="tr"){LS.tr=b.checked;renderL()}
+ else if(a==="chk"){if(LS.pl.length<s.t.length){toast("Используйте все слова");return}LS.good=LS.pl.map(function(k){return s.t[k].w}).join("|")===s.t.map(function(t){return t.w}).join("|");if(LS.good)LS.ok++;LS.chk=true;renderL();var x=$("v-les").querySelector(".expl");if(x)x.scrollIntoView({block:"nearest"})}
+ else if(a==="next"){if(LS.i<LS.f.l.ls.length-1){LS.i++;nextS();scrollTo(0,0)}else finishL()}
+ else if(a==="again"){lesView(LS.f.l.id);scrollTo(0,0)}});
+function tick(){var td=dstr(),y=dstr(new Date(Date.now()-864e5));if(D.day.last!==td){D.day.streak=D.day.last===y?D.day.streak+1:1;D.day.last=td;D.day.best=Math.max(D.day.best,D.day.streak)}}
+
 /* ---------- роутер ---------- */
-var rc=null,V=["home","subj","quiz","res","stats","fav","prof"];
+var rc=null,V=["home","subj","quiz","res","stats","fav","prof","lang","les"];
 function view(n,t){V.forEach(function(k){var el=$("v-"+k);el.hidden=k!==n;if(k===n&&rc!==undefined){el.classList.remove("view");void el.offsetWidth;el.classList.add("view")}});document.title=t||"upyourself — прокачай знания";
- [].forEach.call(document.querySelectorAll(".nav a"),function(a){var h=a.getAttribute("href");a.classList.toggle("on",(n==="stats"&&h==="#stats")||(n==="fav"&&h==="#fav")||(n==="prof"&&h==="#profile")||(n==="subj"&&h==="#subjects"))})}
+ [].forEach.call(document.querySelectorAll(".nav a"),function(a){var h=a.getAttribute("href");a.classList.toggle("on",(n==="stats"&&h==="#stats")||(n==="fav"&&h==="#fav")||(n==="prof"&&h==="#profile")||(n==="subj"&&h==="#subjects")||((n==="lang"||n==="les")&&h==="#lang"))})}
 function route(h){clearInterval(tmr);rc=h;var m;
  if(h==="#play"){if(P||lp()){view("quiz","Тест — upyourself");play();scrollTo(0,0);return}h="#subjects"}
  else if(P&&h!=="#play"&&!/^#res=/.test(h)){}
  if(m=h.match(/^#s=([a-z]+)$/)){if(subjView(m[1])){view("subj",sn(m[1])+" — upyourself");scrollTo(0,0);return}h="#subjects"}
  if(m=h.match(/^#res=(\d+)$/)){resView(m[1]);view("res","Результат — upyourself");scrollTo(0,0);return}
+ if(m=h.match(/^#lang(?:=([a-z]+))?$/)){if(langView(m[1])){view("lang","Языки — upyourself");scrollTo(0,0);return}return route("#lang")}
+ if(m=h.match(/^#les=([a-z0-9-]+)$/)){if(lesView(m[1])){view("les","Урок — upyourself");scrollTo(0,0);return}return route("#lang")}
  if(h==="#stats"){statsView();view("stats","Статистика — upyourself");scrollTo(0,0);return}
  if(h==="#fav"){favView();view("fav","Избранное — upyourself");scrollTo(0,0);return}
  if(h==="#profile"){profView();view("prof","Профиль — upyourself");scrollTo(0,0);return}
